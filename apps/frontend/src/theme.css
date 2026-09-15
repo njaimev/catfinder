@@ -1,0 +1,131 @@
+:root {
+  --bs-primary: #b8a9e3;
+  --bs-primary-rgb: 184, 169, 227;
+  --bs-secondary: #a8d8c9;
+  --bs-secondary-rgb: 168, 216, 201;
+  --bs-success: #b5e3b0;
+  --bs-success-rgb: 181, 227, 176;
+  --bs-warning: #f6c9a0;
+  --bs-warning-rgb: 246, 201, 160;
+  --bs-danger: #f3b6c2;
+  --bs-danger-rgb: 243, 182, 194;
+  --bs-body-bg: #fbf7f4;
+  --bs-body-color: #4a4a4a;
+  --bs-border-radius: 0.75rem;
+  --bs-border-radius-sm: 0.5rem;
+  --bs-border-radius-lg: 1rem;
+}
+
+body {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+}
+
+.navbar {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #eee;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+/*
+ * Bootstrap 5.3's precompiled CSS bakes each button/alert variant's colors
+ * into *local* custom properties (e.g. --bs-btn-bg) with literal hex values,
+ * rather than reading the global --bs-primary/--bs-danger tokens above. So
+ * re-theming without recompiling Sass means overriding those local
+ * variables per component, not just the global ones.
+ */
+.btn-primary {
+  --bs-btn-color: #3a3350;
+  --bs-btn-bg: #b8a9e3;
+  --bs-btn-border-color: #b8a9e3;
+  --bs-btn-hover-color: #2f293f;
+  --bs-btn-hover-bg: #a794d9;
+  --bs-btn-hover-border-color: #a794d9;
+  --bs-btn-active-color: #2f293f;
+  --bs-btn-active-bg: #9b86d1;
+  --bs-btn-active-border-color: #9b86d1;
+  --bs-btn-disabled-color: #3a3350;
+  --bs-btn-disabled-bg: #b8a9e3;
+  --bs-btn-disabled-border-color: #b8a9e3;
+  --bs-btn-focus-shadow-rgb: 184, 169, 227;
+}
+
+.btn-outline-secondary {
+  --bs-btn-color: #4a4a4a;
+  --bs-btn-border-color: #a8d8c9;
+  --bs-btn-hover-color: #234238;
+  --bs-btn-hover-bg: #a8d8c9;
+  --bs-btn-hover-border-color: #a8d8c9;
+  --bs-btn-active-color: #234238;
+  --bs-btn-active-bg: #96cdbb;
+  --bs-btn-active-border-color: #96cdbb;
+  --bs-btn-focus-shadow-rgb: 168, 216, 201;
+}
+
+.btn-outline-danger {
+  --bs-btn-color: #b5495b;
+  --bs-btn-border-color: #f3b6c2;
+  --bs-btn-hover-color: #6b1f2a;
+  --bs-btn-hover-bg: #f3b6c2;
+  --bs-btn-hover-border-color: #f3b6c2;
+  --bs-btn-active-color: #6b1f2a;
+  --bs-btn-active-bg: #ef9fb0;
+  --bs-btn-active-border-color: #ef9fb0;
+  --bs-btn-focus-shadow-rgb: 243, 182, 194;
+}
+
+.alert-success {
+  --bs-alert-color: #2f5c2b;
+  --bs-alert-bg: #e3f5e1;
+  --bs-alert-border-color: #b5e3b0;
+}
+
+.alert-danger {
+  --bs-alert-color: #7a2635;
+  --bs-alert-bg: #fce8ec;
+  --bs-alert-border-color: #f3b6c2;
+}
+
+a {
+  color: #7c66c4;
+}
+
+a:hover {
+  color: #6b52b8;
+}
+
+.badge-rareza-comun {
+  background-color: #e3e3e3;
+  color: #4a4a4a;
+  padding: 0.35em 0.65em;
+  border-radius: var(--bs-border-radius-sm);
+  font-size: 0.8em;
+}
+
+.badge-rareza-poco_comun {
+  background-color: var(--bs-secondary);
+  color: #234238;
+  padding: 0.35em 0.65em;
+  border-radius: var(--bs-border-radius-sm);
+  font-size: 0.8em;
+}
+
+.badge-rareza-rara {
+  background-color: var(--bs-primary);
+  color: #ffffff;
+  padding: 0.35em 0.65em;
+  border-radius: var(--bs-border-radius-sm);
+  font-size: 0.8em;
+}
+
+.badge-rareza-legendaria {
+  background-color: var(--bs-warning);
+  color: #5a3b1e;
+  padding: 0.35em 0.65em;
+  border-radius: var(--bs-border-radius-sm);
+  font-size: 0.8em;
+}

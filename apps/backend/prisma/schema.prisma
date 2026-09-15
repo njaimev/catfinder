@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Rareza {
+  COMUN
+  POCO_COMUN
+  RARA
+  LEGENDARIA
+}
+
+model Usuario {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  passwordHash String
+  nombre       String?
+  creadoEn     DateTime @default(now())
+
+  laminas Lamina[]
+
+  @@map("usuarios")
+}
+
+model Raza {
+  id         Int    @id @default(autoincrement())
+  nombre     String @unique
+  rareza     Rareza
+  foto       Bytes  @db.LongBlob
+  fotoTipo   String
+  fotoNombre String?
+
+  laminas Lamina[]
+
+  @@map("razas")
+}
+
+model Lamina {
+  id            Int      @id @default(autoincrement())
+  usuarioId     Int
+  usuario       Usuario  @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  razaId        Int
+  raza          Raza     @relation(fields: [razaId], references: [id])
+  fechaAgregada DateTime
+  creadoEn      DateTime @default(now())
+
+  @@index([usuarioId])
+  @@index([usuarioId, razaId])
+  @@map("laminas")
+}
