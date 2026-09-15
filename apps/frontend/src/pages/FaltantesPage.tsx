@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { api, fotoAbsoluta, type Raza } from "../api/client";
 import { RazaBadge } from "../components/RazaBadge";
+import { DetalleModal } from "../components/DetalleModal";
 
 export function FaltantesPage() {
   const [razas, setRazas] = useState<Raza[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [seleccionada, setSeleccionada] = useState<Raza | null>(null);
 
   useEffect(() => {
     api
@@ -26,12 +28,25 @@ export function FaltantesPage() {
         {razas.map((r) => (
           <div className="col-6 col-sm-4 col-md-3" key={r.id}>
             <div className="card h-100" style={{ opacity: 0.65 }}>
-              <img
-                src={fotoAbsoluta(r.fotoUrl)}
-                className="card-img-top"
-                alt={r.nombre}
-                style={{ objectFit: "cover", height: 160, filter: "grayscale(1)" }}
-              />
+              <button
+                type="button"
+                className="btn p-0 border-0 bg-transparent text-start"
+                onClick={() => setSeleccionada(r)}
+                aria-label={`Ver ${r.nombre} en detalle`}
+              >
+                <img
+                  src={fotoAbsoluta(r.fotoUrl)}
+                  className="card-img-top"
+                  alt={r.nombre}
+                  style={{
+                    objectFit: "contain",
+                    height: 190,
+                    backgroundColor: "#f7f4f0",
+                    filter: "grayscale(1)",
+                    cursor: "pointer",
+                  }}
+                />
+              </button>
               <div className="card-body">
                 <h2 className="h6 mb-1">{r.nombre}</h2>
                 <RazaBadge rareza={r.rareza} />
@@ -40,6 +55,7 @@ export function FaltantesPage() {
           </div>
         ))}
       </div>
+      {seleccionada && <DetalleModal raza={seleccionada} onClose={() => setSeleccionada(null)} />}
     </div>
   );
 }
